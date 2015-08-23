@@ -43,14 +43,13 @@ class FitbitQuery
 
 
   def run_query
-    Rails.cache.fetch('groups', expires_in: 1.minute) do
+    Rails.cache.fetch('groups_with_timestamp', expires_in: 5.minute) do
       run_query_internal
     end
+
   end
 
-
   def run_query_internal
-
     mechanize = Mechanize.new
 
     query = {
@@ -109,8 +108,12 @@ class FitbitQuery
       count += 1
     }
 
+    group_results_with_timestamp = [Time.now, group_results]
 
-    group_results
+    puts group_results_with_timestamp
+
+    group_results_with_timestamp
+
 
   end
 

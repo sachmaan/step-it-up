@@ -1,4 +1,8 @@
 <div class="container">
+  <% groups = @groups_with_timestamp[1] %>
+  Last updated: <%=@groups_with_timestamp[0]%>
+  <p />
+
 
   <% index = 1 %>
   <table width="500px" border="1">
@@ -8,7 +12,7 @@
       <th>Avg Steps&nbsp;</th>
       <th>Num People&nbsp;</th>
     </tr>
-    <% @groups.each { |group| %>
+    <% groups.each { |group| %>
         <tr>
           <td><%= index %></td>
           <td><a target="_blank" href="https://www.fitbit.com/group/<%=group[:id]%>"><%= group[:name] %></a></td>
