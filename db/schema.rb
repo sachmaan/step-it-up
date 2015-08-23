@@ -13,13 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20140707111715) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "widgets", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "stock"
+  create_table "widgets", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "stock",       limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
